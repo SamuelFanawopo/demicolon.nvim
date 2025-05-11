@@ -88,11 +88,8 @@ With [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ## Usage
 
-<<<<<<< HEAD
 After pressing a `]`/`[`-prefixed key, for example `]q`, Demicolon lets you repeat its motion with `;` and `,`.
-=======
 After pressing any of the keymaps below, demicolon.nvim lets you repeat them with `;` and `,` (or with any **alternative-repeat** keys you configure).
->>>>>>> 77b60b9 (feat: add configurable alternative-repeat keys)
 
 Of course, Demicolon also lets you repeat `t`/`T`/`f`/`F` with `;`/`,`. See [`:help t`](https://neovim.io/doc/user/motion.html#t), [`:help T`](https://neovim.io/doc/user/motion.html#T), [`:help f`](https://neovim.io/doc/user/motion.html#f), and [`:help F`](https://neovim.io/doc/user/motion.html#F) respectively for more information.
 
@@ -161,7 +158,6 @@ opts = {
   keymaps = {
     -- Create t/T/f/F key mappings
     horizontal_motions = true,
-<<<<<<< HEAD
     -- Create ; and , key mappings. Set it to 'stateless', 'stateful', or false to
     -- not create any mappings. 'stateless' means that ;/, move right/left.
     -- 'stateful' means that ;/, will remember the direction of the original
@@ -170,95 +166,7 @@ opts = {
     -- Keys that shouldn't be repeatable (because aren't motions), excluding the prefix `]`/`[`
     -- If you have custom motions that use one of these, make sure to remove that key from here
     disabled_keys = { 'p', 'I', 'A', 'f', 'i' },
-=======
-    -- Create ]d/[d, etc. key mappings to jump to diganostics. See demicolon.keymaps.create_default_diagnostic_keymaps
-    diagnostic_motions = true,
-    -- Create ; and , key mappings
-    repeat_motions = true,
-    -- Create ]q/[q/]<C-q>/[<C-q> and ]l/[l/]<C-l>/[<C-l> quickfix and location list mappings
-    list_motions = true,
-    -- Create `]s`/`[s` key mappings for jumping to spelling mistakes
-    spell_motions = true,
-    -- Create `]z`/`[z` key mappings for jumping to folds
-    fold_motions = true,
-    -- Configure alternative repeat keys
-    alternative_repeat = {
-      enabled         = false,   -- set true to use alternative keys
-      forward  = { key = 'n',  fallback = 'n'  }, -- example
-      backward = { key = 'N',  fallback = 'N'  }, -- example
-      reset_on_search = true,   -- clear after / or ?
     },
-  },
-  integrations = {
-    -- Integration with https://github.com/lewis6991/gitsigns.nvim
-    gitsigns = {
-      enabled = true,
-      keymaps = {
-        next = ']c',
-        prev = '[c',
-      },
-    },
-    -- Integration with https://github.com/nvim-neotest/neotest
-    neotest = {
-      enabled = true,
-      keymaps = {
-        test = {
-          next = ']t',
-          prev = '[t',
-        },
-        failed_test = {
-          next = ']T',
-          prev = '[T',
-        },
-      },
-    },
-    -- Integration with https://github.com/lervag/vimtex
-    vimtex = {
-      enabled = true,
-      keymaps = {
-        section_start = {
-          next = ']]',
-          prev = '[[',
-        },
-        section_end = {
-          next = '][',
-          prev = '[]',
-        },
-        frame_start = {
-          next = ']r',
-          prev = '[r',
-        },
-        frame_end = {
-          next = ']R',
-          prev = '[R',
-        },
-        math_start = {
-          next = ']n',
-          prev = '[n',
-        },
-        math_end = {
-          next = ']N',
-          prev = '[N',
-        },
-        comment_start = {
-          next = ']/',
-          prev = '[/',
-        },
-        comment_end = {
-          next = ']*',
-          prev = '[*',
-        },
-        environment_start = {
-          next = ']m',
-          prev = '[m',
-        },
-        environment_end = {
-          next = ']M',
-          prev = '[M',
-        },
-      }
-    },
->>>>>>> 77b60b9 (feat: add configurable alternative-repeat keys)
   },
 }
 ```
@@ -294,7 +202,7 @@ require('demicolon').setup({
 
 [eyeliner.nvim](https://github.com/jinh0/eyeliner.nvim) can highlight unique letters in words when you press `t`/`T`/`f`/`F`. Below is my recommended configuration for using eyeliner.nvim together with Demicolon.
 
-*NOTE:** make sure to set `keymaps.horizontal_motions = false` in your demicolon setup if you want to use this config.
+**NOTE:** make sure to set `keymaps.horizontal_motions = false` in your demicolon setup if you want to use this config.
 
 ```lua
 return {

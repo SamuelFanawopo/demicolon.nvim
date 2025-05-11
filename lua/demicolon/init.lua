@@ -5,12 +5,10 @@ local M = {}
 ---@class demicolon.diagnostic.options
 ---@field float? boolean|vim.diagnostic.Opts.Float Default options passed to diagnostic floating window
 
-<<<<<<< HEAD
 ---@class demicolon.keymaps.options
 ---@field horizontal_motions? boolean Create `t`/`T`/`f`/`F` key mappings
 ---@field repeat_motions? 'stateless' | 'stateful' | false Create `;` and `,` key mappings. `'stateless'` means that `;`/`,` move right/left. `'stateful'` means that `;`/`,` will remember the direction of the original jump, and `,` inverts that direction (Neovim's default behaviour).
 ---@field disabled_keys? table<string> Keys that shouldn't be repeatable (because aren't motions), excluding the prefix `]`/`[`
-=======
 ---@class DemicolonAlternativeRepeatSpec
 ---@field key? string|string[] Key(s) that trigger the repeat
 ---@field fallback? string Fed when no demicolon motion is active
@@ -29,7 +27,6 @@ local M = {}
 ---@field spell_motions? boolean Create `]s`/`[s` key mappings for jumping to spelling mistakes
 ---@field fold_motions? boolean Create `]z`/`[z` key mappings for jumping to folds
 ---@field alternative_repeat? DemicolonAlternativeRepeatOptions Configure alternative repeat keymaps
->>>>>>> 77b60b9 (feat: add configurable alternative-repeat keys)
 
 ---@class demicolon.options
 ---@field diagnostic? demicolon.diagnostic.options Diagnostic options
@@ -37,10 +34,8 @@ local M = {}
 local options = {
   keymaps = {
     horizontal_motions = true,
-<<<<<<< HEAD
     repeat_motions = 'stateless',
     disabled_keys = { 'p', 'I', 'A', 'f', 'i' },
-=======
     diagnostic_motions = true,
     repeat_motions = true,
     list_motions = true,
@@ -119,7 +114,6 @@ local options = {
         },
       },
     },
->>>>>>> 77b60b9 (feat: add configurable alternative-repeat keys)
   },
 }
 
@@ -131,14 +125,11 @@ end
 ---@param opts? demicolon.options
 function M.setup(opts)
   options = vim.tbl_deep_extend('force', options, opts or {})
-<<<<<<< HEAD
-=======
 
   local alt = options.keymaps.alternative_repeat or { enabled = false }
   if alt.enabled then
     options.keymaps.repeat_motions = false
   end
->>>>>>> 77b60b9 (feat: add configurable alternative-repeat keys)
 
   if options.keymaps.horizontal_motions then
     keymaps.create_default_horizontal_keymaps()
@@ -151,9 +142,7 @@ function M.setup(opts)
 
   require('demicolon.deprecation').warn_for_deprecated_options(options)
 
-<<<<<<< HEAD
   require('demicolon.listen').listen_for_repetable_bracket_motions(options.keymaps.disabled_keys)
-=======
   if options.keymaps.list_motions then
     keymaps.create_default_list_keymaps()
   end
@@ -192,7 +181,6 @@ function M.setup(opts)
   if options.integrations.vimtex.enabled then
     require('demicolon.integrations.vimtex').create_keymaps()
   end
->>>>>>> 77b60b9 (feat: add configurable alternative-repeat keys)
 end
 
 return M
